@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "name": "One",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          },
+          {
+            "id": 2,
+            "name": "Subtraction"
+          },
+          {
+            "id": 3,
+            "name": "Multiplication"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "English",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Science",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Two",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Three",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Four",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Five",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Six",
+    "subjects": [
+      {
+        "id": 1,
+        "name": "Math",
+        "topics": [
+          {
+            "id": 1,
+            "name": "Addition"
+          }
+        ]
+      }
+    ]
+  }
+]
