@@ -9,7 +9,7 @@ export class Grade {
       this.name = grade.name;
       this.subjects = [];
       if (grade.subjects && grade.subjects.length) {
-        grade.Subjects.array.forEach((element) => {
+        grade.subjects.forEach((element) => {
           this.subjects.push(element);
         });
       }
