@@ -1,29 +1,32 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4 border-right">
+      <h2 class="text-center p-2 m-2">Choose your grade</h2>
       <button
         type="button"
-        class="btn btn-primary btn-lg btn-block"
+        class="btn btn-primary btn-lg btn-block p-4"
         *ngFor="let grade of grades"
         (click)="selectGrade(grade)"
       >
         {{ grade.name }}
       </button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 border-right">
+      <h2 class="text-center p-2 m-2">Choose your subject</h2>
       <button
         type="button"
-        class="btn btn-primary btn-lg btn-block"
+        class="btn btn-primary btn-lg btn-block p-4"
         *ngFor="let subject of subjects"
         (click)="selectSubject(subject)"
       >
         {{ subject.name }}
       </button>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 border-right">
+      <h2 class="text-center p-2 m-2">Choose your topic</h2>
       <button
         type="button"
-        class="btn btn-primary btn-lg btn-block"
+        class="btn btn-primary btn-lg btn-block p-4"
         *ngFor="let topic of topics"
         (click)="selectTopic(topic)"
       >

@@ -1,2 +1,4 @@
-<p>worksheet works!</p>
-<h1>{{ topic.name + topic.gradeId + topic.subjectId }}</h1>
+<h2 *ngFor="let question of questions">
+  {{ question.id + " " + question.operand1 }}
+</h2>
+<app-next></app-next>
