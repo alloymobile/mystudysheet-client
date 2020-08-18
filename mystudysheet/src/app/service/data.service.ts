@@ -1,7 +1,7 @@
 import { Topic } from './../model/topic';
 import { Grade } from './../model/grade';
 import { Injectable } from '@angular/core';
-import grades from '../../assets/myworksheet.json';
+import grades from '../../assets/mystudysheet.json';
 
 @Injectable({
   providedIn: 'root',
