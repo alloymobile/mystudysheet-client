@@ -10,10 +10,7 @@
       </button>
     </div>
     <div class="col-sm-2">
-      <button
-        type="button"
-        class="btn btn-primary btn-lg btn-block p-2"
-      >
+      <button type="button" class="btn btn-primary btn-lg btn-block p-2">
         Previous
       </button>
     </div>
@@ -27,10 +24,7 @@
       </button>
     </div>
     <div class="col-sm-2">
-      <button
-        type="button"
-        class="btn btn-primary btn-lg btn-block p-2"
-      >
+      <button type="button" class="btn btn-primary btn-lg btn-block p-2">
         Last
       </button>
     </div>
@@ -44,10 +38,7 @@
       </button>
     </div>
     <div class="col-sm-2">
-      <button
-        type="button"
-        class="btn btn-primary btn-lg btn-block p-2"
-      >
+      <button type="button" class="btn btn-primary btn-lg btn-block p-2">
         Check
       </button>
     </div>
@@ -56,10 +47,10 @@
     <div class="col-sm-3" *ngFor="let ques of question">
       <div class="card">
         <div class="card-body text-center">
-          <h3>&nbsp;&nbsp;&nbsp;&nbsp;{{ques.operand1}}</h3>
-          <h3>{{ques.operator+" "+ques.operand2}}</h3>
-          <hr>
-          <input type="number" [(ngModel)]="ques.answer">
+          <h3>&nbsp;&nbsp;{{ ques.operand1 }}</h3>
+          <h3>{{ ques.operator + ques.operand2 }}</h3>
+          <hr />
+          <input type="number" [(ngModel)]="ques.answer" />
         </div>
       </div>
     </div>

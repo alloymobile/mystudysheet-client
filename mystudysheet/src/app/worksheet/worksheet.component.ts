@@ -2,9 +2,9 @@ import { DataService } from './../service/data.service';
 import { Topic } from './../model/topic';
 import { Question } from './../model/question';
 import { Component, OnInit } from '@angular/core';
-import pdfMake from "pdfmake/build/pdfmake";  
-import pdfFonts from "pdfmake/build/vfs_fonts";  
-pdfMake.vfs = pdfFonts.pdfMake.vfs; 
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-worksheet',
@@ -102,6 +102,9 @@ export class WorksheetComponent implements OnInit {
       case 3:
         this.questions = this.getMultiplication();
         break;
+      case 4:
+        this.questions = this.getDivision();
+        break;
     }
   }
 
@@ -115,10 +118,16 @@ export class WorksheetComponent implements OnInit {
     let questions: Question[][] = [];
     for (let i = 0; i < this.ROW; i++) {
       question = [];
-      for(let j = 0; j < this.COL; j++){
+      for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        ques.operand1 = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
-        ques.operand2 = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
+        ques.operand1 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        ques.operand2 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
         ques.operator = '+';
         ques.correctAnswer = ques.operand1 + ques.operand2;
         ques.id = WorksheetComponent.id++;
@@ -135,14 +144,20 @@ export class WorksheetComponent implements OnInit {
     let questions: Question[][] = [];
     for (let i = 0; i < this.ROW; i++) {
       question = [];
-      for(let j = 0; j < this.COL; j++){
+      for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        let a = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
-        let b = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
-        if( a > b ){
+        let a = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        let b = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        if (a > b) {
           ques.operand1 = a;
           ques.operand2 = b;
-        }else{
+        } else {
           ques.operand1 = b;
           ques.operand2 = a;
         }
@@ -162,10 +177,16 @@ export class WorksheetComponent implements OnInit {
     let questions: Question[][] = [];
     for (let i = 0; i < this.ROW; i++) {
       question = [];
-      for(let j = 0; j < this.COL; j++){
+      for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        ques.operand1 = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
-        ques.operand2 = this.rand(Math.pow(this.MAX, this.topic.gradeId),Math.pow(this.MAX,this.topic.gradeId -1));
+        ques.operand1 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        ques.operand2 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
         ques.operator = 'x';
         ques.correctAnswer = ques.operand1 * ques.operand2;
         ques.id = WorksheetComponent.id++;
@@ -176,6 +197,31 @@ export class WorksheetComponent implements OnInit {
     return questions;
   }
 
+  getDivision(): Question[][] {
+    let ques: Question;
+    let question: Question[];
+    let questions: Question[][] = [];
+    for (let i = 0; i < this.ROW; i++) {
+      question = [];
+      for (let j = 0; j < this.COL; j++) {
+        ques = new Question();
+        ques.operand1 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        ques.operand2 = this.rand(
+          Math.pow(this.MAX, this.topic.gradeId),
+          Math.pow(this.MAX, this.topic.gradeId - 1)
+        );
+        ques.operator = '/';
+        ques.correctAnswer = ques.operand1 / ques.operand2;
+        ques.id = WorksheetComponent.id++;
+        question.push(ques);
+      }
+      questions.push(question);
+    }
+    return questions;
+  }
   // using Math.floor
   rand(min, max) {
     min = Math.ceil(min);
@@ -183,26 +229,102 @@ export class WorksheetComponent implements OnInit {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  next(){
+  next() {
     this.getQuestion();
   }
 
-  showAnswer(){
-    if(this.questions && this.questions.length > 0){
-      for(let i=0;i<this.questions.length;i++){
-        for(let j =0; j < this.questions[i].length; j++){
-          this.questions[i][j].answer = String(this.questions[i][j].correctAnswer);
+  showAnswer() {
+    if (this.questions && this.questions.length > 0) {
+      for (let i = 0; i < this.questions.length; i++) {
+        for (let j = 0; j < this.questions[i].length; j++) {
+          this.questions[i][j].answer = String(
+            this.questions[i][j].correctAnswer
+          );
+          this.questions[i][j].showAnswer = true;
         }
       }
     }
   }
 
-  generatePDF() {  
-    let docDefinition = {  
-      header: 'C#Corner PDF Header',  
-      content: ''+this.questions[0][0].operand1 
-    };   
-    pdfMake.createPdf(docDefinition).open();          
-  }
+  generatePDF(action = 'open') {
+    var rows = [];
+    var heights = [130, 130, 130, 130, 130];
+    if (this.questions && this.questions.length > 0) {
+      for (let i = 0; i < this.questions.length; i++) {
+        let row = [];
+        for (let j = 0; j < this.questions[i].length; j++) {
+          let r1 = {
+            text: '   ' + this.questions[i][j].operand1,
+            alignment: 'center',
+            fontSize: 25,
+            preserveLeadingSpaces: true,
+          };
+          let r2 = {
+            text:
+              this.questions[i][j].operator +
+              ' ' +
+              this.questions[i][j].operand2,
+            alignment: 'center',
+            fontSize: 25,
+          };
+          let r3 = {
+            canvas: [
+              { type: 'line', x1: 30, y1: 5, x2: 95, y2: 5, lineWidth: 2 },
+            ],
+          };
+          let r4 = {
+            text: ' ',
+            alignment: 'center',
+            fontSize: 25,
+            preserveLeadingSpaces: true,
+          };
+          let r5 = {
+            text: ' ',
+            alignment: 'center',
+            preserveLeadingSpaces: true,
+          };
+          if (this.questions[i][j].showAnswer) {
+            r4 = {
+              text: '   ' + this.questions[i][j].answer,
+              alignment: 'center',
+              fontSize: 25,
+              preserveLeadingSpaces: true,
+            };
+          }
+          let op = [];
+          op.push(r5, r1, r2, r3, r4);
+          let res = [];
+          res.push(op);
+          let final = { columns: res };
+          row.push(final);
+        }
+        rows.push(row);
+      }
+    }
 
+    let docDefinition = {
+      pageSize: 'A4',
+      content: [
+        {
+          text: 'www.mystudysheet.com',
+          alignment: 'center',
+        },
+        {
+          table: {
+            widths: ['*', '*', '*', '*'],
+            heights: heights,
+            body: rows,
+          },
+        },
+      ],
+    };
+
+    if (action === 'download') {
+      pdfMake.createPdf(docDefinition).download();
+    } else if (action === 'print') {
+      pdfMake.createPdf(docDefinition).print();
+    } else {
+      pdfMake.createPdf(docDefinition).open();
+    }
+  }
 }
