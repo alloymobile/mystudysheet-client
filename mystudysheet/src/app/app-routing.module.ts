@@ -1,12 +1,8 @@
-import { WorksheetComponent } from './worksheet/worksheet.component';
-import { IntroComponent } from './intro/intro.component';
+import { MainComponent } from './main/main.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', component: IntroComponent },
-  { path: 'worksheet', component: WorksheetComponent },
-];
+const routes: Routes = [{ path: '', component: MainComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
