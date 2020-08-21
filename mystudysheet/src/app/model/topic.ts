@@ -3,7 +3,11 @@ export class Topic {
   name: string;
   gradeId: number;
   subjectId: number;
+  icon: any;
   constructor(topic?: any) {
+    this.gradeId = 0;
+    this.subjectId = 0;
+    this.icon = '';
     if (topic) {
       this.id = Number(topic.id);
       this.name = topic.name;
@@ -11,7 +15,5 @@ export class Topic {
       this.id = 0;
       this.name = '';
     }
-    this.gradeId = 0;
-    this.subjectId = 0;
   }
 }

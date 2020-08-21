@@ -1,55 +1,12 @@
-/*---------------Sidebar Component------------------*/
+/* ---------------Sidebar Component------------------*/
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
   background: #7386d5;
   color: #fff;
   transition: all 0.3s;
 }
 
-#sidebar.active {
-  min-width: 80px;
-  max-width: 80px;
-  text-align: center;
-}
-
-#sidebar.active .sidebar-header h3,
-#sidebar.active .CTAs {
-  display: none;
-}
-
-#sidebar.active .sidebar-header strong {
-  display: block;
-}
-
 #sidebar ul li a {
   text-align: left;
-}
-
-#sidebar.active ul li a {
-  padding: 20px 10px;
-  text-align: center;
-  font-size: 0.85em;
-}
-
-#sidebar.active ul li a i {
-  margin-right: 0;
-  display: block;
-  font-size: 1.8em;
-  margin-bottom: 5px;
-}
-
-#sidebar.active ul ul a {
-  padding: 10px !important;
-}
-
-#sidebar.active .dropdown-toggle::after {
-  top: auto;
-  bottom: 10px;
-  right: 50%;
-  -webkit-transform: translateX(50%);
-  -ms-transform: translateX(50%);
-  transform: translateX(50%);
 }
 
 #sidebar .sidebar-header {
@@ -62,24 +19,26 @@
   font-size: 1.8em;
 }
 
-#sidebar ul.components {
-  padding: 20px 0;
-  border-bottom: 1px solid #47748b;
-}
-
 #sidebar ul li a {
   padding: 10px;
   font-size: 1.1em;
   display: block;
 }
 
+.mobile {
+  display: none;
+}
+.icon {
+  margin-right: 10px;
+}
+
+.carrot {
+  float: right;
+}
+
 #sidebar ul li a:hover {
   color: #7386d5;
   background: #fff;
-}
-
-#sidebar ul li a i {
-  margin-right: 10px;
 }
 
 #sidebar ul li.active > a,
@@ -93,15 +52,75 @@ a[data-toggle="collapse"] {
 }
 
 .dropdown-toggle::after {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  display: none;
 }
 
 ul ul a {
   font-size: 0.9em !important;
-  padding-left: 30px !important;
+  padding-left: 20px !important;
   background: #6d7fcc;
+}
+
+ul ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 40px !important;
+  background: #6d7fcc;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  text-align: center;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+  #sidebar {
+    text-align: center;
+  }
+
+  .icon {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+  }
+  .carrot {
+    text-align: center;
+  }
+  .text {
+    font-size: 0.6em;
+  }
+  .mobile {
+    display: block;
+    font-size: 2em;
+    text-align: center !important;
+  }
+
+  ul ul a {
+    padding-left: 0px !important;
+    background: #6d7fcc;
+  }
+
+  ul ul ul a {
+    padding-left: 0px !important;
+    background: #6d7fcc;
+  }
+
+  #sidebar .sidebar-header strong {
+    display: block;
+    font-size: 1.8em;
+  }
+  .desktop {
+    display: none;
+  }
 }

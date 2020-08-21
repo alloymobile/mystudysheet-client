@@ -3,11 +3,15 @@ export class Grade {
   id: number;
   name: string;
   subjects: Subject[];
+  icon: any;
+  active: boolean;
   constructor(grade?: any) {
+    this.subjects = [];
+    this.icon = '';
+    this.active = true;
     if (grade) {
       this.id = Number(grade.id);
       this.name = grade.name;
-      this.subjects = [];
       if (grade.subjects && grade.subjects.length) {
         grade.subjects.forEach((element) => {
           this.subjects.push(element);
@@ -16,7 +20,6 @@ export class Grade {
     } else {
       this.id = 0;
       this.name = '';
-      this.subjects = [];
     }
   }
 }

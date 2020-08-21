@@ -1,35 +1,35 @@
+import { MyStudySheet } from './../mystudysheet';
 import { Question } from './../model/question';
 import { MathService } from './../service/math.service';
 import { GeneratePDFService } from './../service/generate-pdf.service';
 import { Topic } from './../model/topic';
 import { Component, OnInit } from '@angular/core';
-import { Grade } from './../model/grade';
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
-import grades from '../../assets/mystudysheet.json';
+import {
+  faCaretDown,
+  faCaretUp,
+  faGraduationCap,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit {
-  gradeIcon = faGraduationCap;
-  grades: Grade[];
+export class MainComponent extends MyStudySheet implements OnInit {
   topic: Topic;
   questions: Question[][];
+  //To change toggel arrow
+  downToggle = faCaretDown;
+  upToggle = faCaretUp;
+  grade = faGraduationCap;
 
   constructor(
     private generatePDFService: GeneratePDFService,
     private mathService: MathService
   ) {
-    this.grades = [];
+    super();
     this.topic = new Topic();
     this.questions = [];
-    if (grades && grades.length) {
-      grades.forEach((g) => {
-        this.grades.push(new Grade(g));
-      });
-    }
   }
 
   ngOnInit(): void {}
