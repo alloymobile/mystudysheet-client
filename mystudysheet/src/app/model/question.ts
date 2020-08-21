@@ -7,6 +7,7 @@ export class Question {
   operator: string;
   correctAnswer: number;
   showAnswer: boolean;
+  checkAnswer: boolean;
   constructor(question?: any) {
     this.answer = '';
     this.operand1 = 0;
@@ -14,6 +15,7 @@ export class Question {
     this.operator = '';
     this.correctAnswer = 0;
     this.showAnswer = false;
+    this.checkAnswer = false;
     if (question) {
       this.id = Number(question.id);
       this.name = question.name;

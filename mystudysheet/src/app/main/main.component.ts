@@ -8,6 +8,8 @@ import {
   faCaretDown,
   faCaretUp,
   faGraduationCap,
+  faCheck,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -22,6 +24,9 @@ export class MainComponent extends MyStudySheet implements OnInit {
   downToggle = faCaretDown;
   upToggle = faCaretUp;
   grade = faGraduationCap;
+  check = faCheck;
+  cross = faTimes;
+  showCheckAnswer: boolean;
 
   constructor(
     private generatePDFService: GeneratePDFService,
@@ -30,6 +35,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
     super();
     this.topic = new Topic();
     this.questions = [];
+    this.showCheckAnswer = false;
   }
 
   ngOnInit(): void {}
@@ -42,6 +48,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
   }
 
   getQuestion() {
+    this.showCheckAnswer = false;
     switch (this.topic.gradeId) {
       case 1:
         this.getOne();
@@ -132,6 +139,19 @@ export class MainComponent extends MyStudySheet implements OnInit {
           this.questions[i][j].showAnswer = true;
         }
       }
+    }
+  }
+
+  checkAnswer() {
+    if (this.questions && this.questions.length > 0) {
+      this.questions.forEach((ques) => {
+        ques.forEach((q) => {
+          if (q.correctAnswer == Number(q.answer)) {
+            q.checkAnswer = true;
+          }
+        });
+      });
+      this.showCheckAnswer = true;
     }
   }
 

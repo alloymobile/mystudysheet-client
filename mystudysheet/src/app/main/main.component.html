@@ -78,7 +78,7 @@
     </div>
     <!----------------------------------Main Component----------------------------->
     <div class="col-10">
-      <ul class="nav">
+      <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="" (click)="showAnswer()">Answer</a>
         </li>
@@ -106,17 +106,24 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="">Check</a>
+          <a class="nav-link" [routerLink]="" (click)="checkAnswer()">Check</a>
         </li>
       </ul>
       <div class="row" *ngFor="let question of questions">
         <div class="col-sm-3" *ngFor="let ques of question">
-          <div class="card">
+          <div class="card p-2 m-2">
             <div class="card-body text-center">
               <h3>&nbsp;&nbsp;{{ ques.operand1 }}</h3>
               <h3>{{ ques.operator + ques.operand2 }}</h3>
               <hr />
               <input type="number" [(ngModel)]="ques.answer" />
+              <fa-icon
+                [icon]="check"
+                *ngIf="ques.checkAnswer; else wrong"
+              ></fa-icon>
+              <!-- <ng-template #wrong>
+                <fa-icon [icon]="cross"></fa-icon>
+              </ng-template> -->
             </div>
           </div>
         </div>
