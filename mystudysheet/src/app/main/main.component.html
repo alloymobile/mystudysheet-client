@@ -61,7 +61,7 @@
                     <a
                       class="mobile"
                       [routerLink]=""
-                      (click)="selectTopic(grade.id, subject.id, topic)"
+                      (click)="selectTopic(grade, subject, topic)"
                     >
                       <span class="icon"
                         ><fa-icon [icon]="topic.icon"></fa-icon
@@ -79,6 +79,37 @@
     <!----------------------------------Main Component----------------------------->
     <div class="col-10">
       <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+            [routerLink]=""
+            (click)="topic.active = !topic.active"
+          >
+            <span>{{ topic.name }}</span>
+            <span *ngIf="topic.active != null">
+              <fa-icon
+                [icon]="upToggle"
+                *ngIf="topic.active; else upArrow"
+              ></fa-icon>
+              <ng-template #upArrow>
+                <fa-icon [icon]="downToggle"></fa-icon>
+              </ng-template>
+            </span>
+          </a>
+          <div class="dropdown-menu">
+            <a
+              class="dropdown-item"
+              [routerLink]=""
+              *ngFor="let content of topic.contents"
+              (click)="selectContent(content, topic)"
+              >{{ content.name }}</a
+            >
+          </div>
+        </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="" (click)="showAnswer()">Answer</a>
         </li>
@@ -105,9 +136,6 @@
             <a class="dropdown-item" href="#">10 StudySheets</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="" (click)="checkAnswer()">Check</a>
-        </li>
       </ul>
       <div class="row" *ngFor="let question of questions">
         <div class="col-sm-3" *ngFor="let ques of question">
@@ -116,14 +144,23 @@
               <h3>&nbsp;&nbsp;{{ ques.operand1 }}</h3>
               <h3>{{ ques.operator + ques.operand2 }}</h3>
               <hr />
-              <input type="number" [(ngModel)]="ques.answer" />
-              <fa-icon
-                [icon]="check"
-                *ngIf="ques.checkAnswer; else wrong"
-              ></fa-icon>
-              <!-- <ng-template #wrong>
-                <fa-icon [icon]="cross"></fa-icon>
-              </ng-template> -->
+              <div class="form-group justify-content-center">
+                <input
+                  type="number"
+                  [(ngModel)]="ques.answer"
+                  (blur)="checkAnswer(ques)"
+                  class="form-control w-50 m-auto"
+                />
+                <div *ngIf="ques.checkAnswer != null">
+                  <fa-icon
+                    [icon]="check"
+                    *ngIf="ques.checkAnswer; else wrong"
+                  ></fa-icon>
+                  <ng-template #wrong>
+                    <fa-icon [icon]="cross"></fa-icon>
+                  </ng-template>
+                </div>
+              </div>
             </div>
           </div>
         </div>

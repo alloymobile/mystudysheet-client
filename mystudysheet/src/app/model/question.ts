@@ -15,7 +15,7 @@ export class Question {
     this.operator = '';
     this.correctAnswer = 0;
     this.showAnswer = false;
-    this.checkAnswer = false;
+    this.checkAnswer = null;
     if (question) {
       this.id = Number(question.id);
       this.name = question.name;

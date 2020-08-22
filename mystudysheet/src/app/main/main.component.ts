@@ -1,3 +1,6 @@
+import { Content } from './../model/content';
+import { Subject } from './../model/subject';
+import { Grade } from './../model/grade';
 import { MyStudySheet } from './../mystudysheet';
 import { Question } from './../model/question';
 import { MathService } from './../service/math.service';
@@ -20,6 +23,10 @@ import {
 export class MainComponent extends MyStudySheet implements OnInit {
   topic: Topic;
   questions: Question[][];
+  gradeId: number;
+  subjectId: number;
+  topicId: number;
+  contentId: number;
   //To change toggel arrow
   downToggle = faCaretDown;
   upToggle = faCaretUp;
@@ -35,15 +42,20 @@ export class MainComponent extends MyStudySheet implements OnInit {
     super();
     this.topic = new Topic();
     this.questions = [];
+    this.gradeId = 0;
+    this.subjectId = 0;
+    this.topicId = 0;
+    this.contentId = 0;
     this.showCheckAnswer = false;
   }
 
   ngOnInit(): void {}
 
-  selectTopic(gradeId: number, subjectId: number, topic: Topic) {
+  selectTopic(grade: Grade, subject: Subject, topic: Topic) {
     this.topic = topic;
-    this.topic.gradeId = gradeId;
-    this.topic.subjectId = subjectId;
+    this.topic.gradeId = grade.id;
+    this.topic.subjectId = subject.id;
+    this.topic.active = false;
     this.getQuestion();
   }
 
@@ -63,35 +75,19 @@ export class MainComponent extends MyStudySheet implements OnInit {
   }
 
   getOne() {
-    switch (this.topic.subjectId) {
-      case 1:
-        this.getMath();
-        break;
-      case 2:
-        this.getEnglish();
-        break;
-      case 3:
-        this.getScience();
-        break;
-    }
+    this.getSubject(this.topic.subjectId);
   }
 
   getTwo() {
-    switch (this.topic.subjectId) {
-      case 1:
-        this.getMath();
-        break;
-      case 2:
-        this.getEnglish();
-        break;
-      case 3:
-        this.getScience();
-        break;
-    }
+    this.getSubject(this.topic.subjectId);
   }
 
   getThree() {
-    switch (this.topic.subjectId) {
+    this.getSubject(this.topic.subjectId);
+  }
+
+  getSubject(id: number) {
+    switch (id) {
       case 1:
         this.getMath();
         break;
@@ -142,16 +138,13 @@ export class MainComponent extends MyStudySheet implements OnInit {
     }
   }
 
-  checkAnswer() {
-    if (this.questions && this.questions.length > 0) {
-      this.questions.forEach((ques) => {
-        ques.forEach((q) => {
-          if (q.correctAnswer == Number(q.answer)) {
-            q.checkAnswer = true;
-          }
-        });
-      });
-      this.showCheckAnswer = true;
+  getContent(content: Content, topic: Topic) {}
+
+  checkAnswer(question: Question) {
+    if (question.answer == String(question.correctAnswer)) {
+      question.checkAnswer = true;
+    } else {
+      question.checkAnswer = false;
     }
   }
 

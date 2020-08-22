@@ -11,7 +11,7 @@ import {
   faMinus,
   faTimes,
   faDivide,
-  faMinusSquare,
+  faQuestion,
 } from '@fortawesome/free-solid-svg-icons';
 
 export class MyStudySheet {
@@ -74,6 +74,9 @@ export class MyStudySheet {
         break;
       case 4:
         t.icon = faDivide;
+        break;
+      case 5:
+        t.icon = faQuestion;
         break;
       default:
         t.icon = faGraduationCap;
