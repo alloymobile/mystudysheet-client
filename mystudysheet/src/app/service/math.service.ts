@@ -62,9 +62,9 @@ export class MathService {
       case 1:
         return this.getGradeOneAdditionMix(content);
         break;
-      // case 2:
-      //   return this.getGradeTwoAdditionMix(content);
-      //   break;
+      case 2:
+        return this.getGradeOneAdditionMix(content);
+        break;
       // case 3:
       //   return this.getGradeThreeAdditionMix(content);
       //   break;

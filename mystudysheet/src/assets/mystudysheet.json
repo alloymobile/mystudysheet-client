@@ -13,11 +13,15 @@
             "contents": [
               {
                 "id": 1,
-                "name": "Number problem"
+                "name": "Horizontal problems"
               },
               {
                 "id": 2,
-                "name": "Word Problem"
+                "name": "Vertical problems"
+              },
+              {
+                "id": 3,
+                "name": "Word Problems"
               }
             ]
           },
@@ -109,10 +113,14 @@
             "contents": [
               {
                 "id": 1,
-                "name": "Number problem"
+                "name": "Horizontal problem"
               },
               {
                 "id": 2,
+                "name": "Vertical problem"
+              },
+              {
+                "id": 3,
                 "name": "Word Problem"
               }
             ]

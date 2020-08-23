@@ -13,8 +13,6 @@ import {
   faCaretDown,
   faCaretUp,
   faGraduationCap,
-  faCheck,
-  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -30,8 +28,6 @@ export class MainComponent extends MyStudySheet implements OnInit {
   downToggle = faCaretDown;
   upToggle = faCaretUp;
   grade = faGraduationCap;
-  check = faCheck;
-  cross = faTimes;
   showCheckAnswer: boolean;
 
   constructor(
@@ -58,10 +54,11 @@ export class MainComponent extends MyStudySheet implements OnInit {
     this.content.topicId = topic.id;
     this.topic = topic;
     this.topic.active = false;
-    this.getQuestion();
+    this.getQuestion(this.content);
   }
 
-  getQuestion() {
+  getQuestion(content: Content) {
+    this.content = content;
     this.showCheckAnswer = false;
     switch (this.content.subjectId) {
       case 1:
@@ -77,7 +74,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
   }
 
   next() {
-    this.getQuestion();
+    this.getQuestion(this.content);
   }
 
   showAnswer() {
@@ -90,14 +87,6 @@ export class MainComponent extends MyStudySheet implements OnInit {
           this.questions[i][j].showAnswer = true;
         }
       }
-    }
-  }
-
-  checkAnswer(question: Question) {
-    if (question.answer == String(question.correctAnswer)) {
-      question.checkAnswer = true;
-    } else {
-      question.checkAnswer = false;
     }
   }
 

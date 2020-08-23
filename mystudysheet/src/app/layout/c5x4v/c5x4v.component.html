@@ -1,0 +1,28 @@
+<div class="row" *ngFor="let question of questions">
+  <div class="col-sm-3" *ngFor="let ques of question">
+    <div class="card p-2 m-2">
+      <div class="card-body text-center">
+        <h3>&nbsp;&nbsp;{{ ques.operand1 }}</h3>
+        <h3>{{ ques.operator + ques.operand2 }}</h3>
+        <hr />
+        <div class="form-group justify-content-center">
+          <input
+            type="number"
+            [(ngModel)]="ques.answer"
+            (blur)="checkAnswer(ques)"
+            class="form-control w-50 m-auto"
+          />
+          <div *ngIf="ques.checkAnswer != null">
+            <fa-icon
+              [icon]="check"
+              *ngIf="ques.checkAnswer; else wrong"
+            ></fa-icon>
+            <ng-template #wrong>
+              <fa-icon [icon]="cross"></fa-icon>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

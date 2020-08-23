@@ -9,9 +9,19 @@ import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { C5x4vComponent } from './layout/c5x4v/c5x4v.component';
+import { C5x4hComponent } from './layout/c5x4h/c5x4h.component';
+import { C20x1Component } from './layout/c20x1/c20x1.component';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    NavbarComponent,
+    C5x4vComponent,
+    C5x4hComponent,
+    C20x1Component,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [GeneratePDFService, MathService],
   bootstrap: [AppComponent],
