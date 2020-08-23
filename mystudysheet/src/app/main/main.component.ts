@@ -1,11 +1,7 @@
-import { ScienceService } from './../service/science.service';
-import { EnglishService } from './../service/english.service';
+import { MathService } from './../service/subject/math.service';
 import { Content } from './../model/content';
-import { Subject } from './../model/subject';
-import { Grade } from './../model/grade';
 import { MyStudySheet } from './../mystudysheet';
 import { Question } from './../model/question';
-import { MathService } from './../service/math.service';
 import { GeneratePDFService } from './../service/generate-pdf.service';
 import { Topic } from './../model/topic';
 import { Component, OnInit } from '@angular/core';
@@ -32,9 +28,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
 
   constructor(
     private generatePDFService: GeneratePDFService,
-    private mathService: MathService,
-    private englishService: EnglishService,
-    private scienceService: ScienceService
+    private mathService: MathService
   ) {
     super();
     this.topic = new Topic();
@@ -64,12 +58,6 @@ export class MainComponent extends MyStudySheet implements OnInit {
       case 1:
         this.questions = this.mathService.getMath(this.content);
         break;
-      // case 2:
-      //   this.questions = this.englishService.getEnglish(this.content);
-      //   break;
-      // case 3:
-      //   this.questions = this.scienceService.getScience(this.content);
-      //   break;
     }
   }
 

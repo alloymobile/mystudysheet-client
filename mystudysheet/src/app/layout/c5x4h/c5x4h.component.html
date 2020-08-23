@@ -1,1 +1,30 @@
-<p>c5x4h works</p>
+<div class="row" *ngFor="let question of questions">
+  <div class="col-sm-3" *ngFor="let ques of question">
+    <div class="card p-2 m-2">
+      <div class="card-body text-center">
+        <div class="form-group justify-content-center form-inline">
+          <h3>
+            {{
+              ques.operand1 + " " + ques.operator + " " + ques.operand2 + " = "
+            }}
+            <input
+              type="number"
+              [(ngModel)]="ques.answer"
+              (blur)="checkAnswer(ques)"
+              class="form-control w-25"
+            />
+          </h3>
+          <div *ngIf="ques.checkAnswer != null" class="text-center">
+            <fa-icon
+              [icon]="check"
+              *ngIf="ques.checkAnswer; else wrong"
+            ></fa-icon>
+            <ng-template #wrong>
+              <fa-icon [icon]="cross"></fa-icon>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
