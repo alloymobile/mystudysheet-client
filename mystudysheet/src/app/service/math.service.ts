@@ -1,3 +1,4 @@
+import { Content } from './../model/content';
 import { Question } from './../model/question';
 import { Injectable } from '@angular/core';
 
@@ -16,7 +17,89 @@ export class MathService {
     MathService.id = 1;
   }
 
-  getAddition(gradeId: number): Question[][] {
+  getMath(content: Content): Question[][] {
+    switch (content.gradeId) {
+      case 1:
+        return this.getGradeOne(content);
+        break;
+      case 2:
+        return this.getGradeTwo(content);
+        break;
+    }
+    return null;
+  }
+
+  getGradeOne(content: Content): Question[][] {
+    switch (content.topicId) {
+      case 1:
+        return this.getGradeOneAddition(content);
+        break;
+      // case 2:
+      //   return this.getGradeTwoAddition(content);
+      //   break;
+      // case 3:
+      //   return this.getGradeThreeAddition(content);
+      //   break;
+    }
+  }
+
+  getGradeTwo(content: Content): Question[][] {
+    switch (content.topicId) {
+      case 1:
+        return this.getGradeTwoAddition(content);
+        break;
+      // case 2:
+      //   return this.getGradeTwoAddition(content);
+      //   break;
+      // case 3:
+      //   return this.getGradeThreeAddition(content);
+      //   break;
+    }
+  }
+
+  getGradeOneAddition(content: Content): Question[][] {
+    switch (content.id) {
+      case 1:
+        return this.getGradeOneAdditionMix(content);
+        break;
+      // case 2:
+      //   return this.getGradeTwoAdditionMix(content);
+      //   break;
+      // case 3:
+      //   return this.getGradeThreeAdditionMix(content);
+      //   break;
+    }
+  }
+
+  getGradeTwoAddition(content: Content): Question[][] {
+    switch (content.id) {
+      case 1:
+        return this.getGradeTwoAdditionMix(content);
+        break;
+      // case 2:
+      //   return this.getGradeTwoAdditionMix(content);
+      //   break;
+      // case 3:
+      //   return this.getGradeThreeAdditionMix(content);
+      //   break;
+    }
+  }
+
+  getGradeThreeAddition(content: Content): Question[][] {
+    switch (content.id) {
+      case 1:
+        return this.getGradeThreeAdditionMix(content);
+        break;
+      // case 2:
+      //   return this.getGradeTwoAdditionMix(content);
+      //   break;
+      // case 3:
+      //   return this.getGradeThreeAdditionMix(content);
+      //   break;
+    }
+  }
+
+  getGradeOneAdditionMix(content: Content): Question[][] {
     let ques: Question;
     let question: Question[];
     let questions: Question[][] = [];
@@ -24,14 +107,8 @@ export class MathService {
       question = [];
       for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        ques.operand1 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        ques.operand2 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
+        ques.operand1 = this.rand(this.MAX, 0);
+        ques.operand2 = this.rand(this.MAX, 0);
         ques.operator = '+';
         ques.correctAnswer = ques.operand1 + ques.operand2;
         ques.id = MathService.id++;
@@ -42,7 +119,7 @@ export class MathService {
     return questions;
   }
 
-  getSubtraction(gradeId: number): Question[][] {
+  getGradeTwoAdditionMix(content: Content): Question[][] {
     let ques: Question;
     let question: Question[];
     let questions: Question[][] = [];
@@ -50,23 +127,10 @@ export class MathService {
       question = [];
       for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        let a = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        let b = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        if (a > b) {
-          ques.operand1 = a;
-          ques.operand2 = b;
-        } else {
-          ques.operand1 = b;
-          ques.operand2 = a;
-        }
-        ques.operator = '-';
-        ques.correctAnswer = ques.operand1 - ques.operand2;
+        ques.operand1 = this.rand(this.MAX * this.MAX, 0);
+        ques.operand2 = this.rand(this.MAX * this.MAX, 0);
+        ques.operator = '+';
+        ques.correctAnswer = ques.operand1 + ques.operand2;
         ques.id = MathService.id++;
         question.push(ques);
       }
@@ -75,7 +139,7 @@ export class MathService {
     return questions;
   }
 
-  getMultiplication(gradeId: number): Question[][] {
+  getGradeThreeAdditionMix(content: Content): Question[][] {
     let ques: Question;
     let question: Question[];
     let questions: Question[][] = [];
@@ -83,16 +147,10 @@ export class MathService {
       question = [];
       for (let j = 0; j < this.COL; j++) {
         ques = new Question();
-        ques.operand1 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        ques.operand2 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        ques.operator = 'x';
-        ques.correctAnswer = ques.operand1 * ques.operand2;
+        ques.operand1 = this.rand(this.MAX * this.MAX * this.MAX, 0);
+        ques.operand2 = this.rand(this.MAX * this.MAX * this.MAX, 0);
+        ques.operator = '+';
+        ques.correctAnswer = ques.operand1 + ques.operand2;
         ques.id = MathService.id++;
         question.push(ques);
       }
@@ -101,29 +159,88 @@ export class MathService {
     return questions;
   }
 
-  getDivision(gradeId: number): Question[][] {
+  getSubtraction(content: Content): Question[][] {
     let ques: Question;
     let question: Question[];
     let questions: Question[][] = [];
-    for (let i = 0; i < this.ROW; i++) {
-      question = [];
-      for (let j = 0; j < this.COL; j++) {
-        ques = new Question();
-        ques.operand1 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        ques.operand2 = this.rand(
-          Math.pow(this.MAX, gradeId),
-          Math.pow(this.MAX, gradeId - 1)
-        );
-        ques.operator = '/';
-        ques.correctAnswer = ques.operand1 / ques.operand2;
-        ques.id = MathService.id++;
-        question.push(ques);
-      }
-      questions.push(question);
-    }
+    // for (let i = 0; i < this.ROW; i++) {
+    //   question = [];
+    //   for (let j = 0; j < this.COL; j++) {
+    //     ques = new Question();
+    //     let a = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     let b = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     if (a > b) {
+    //       ques.operand1 = a;
+    //       ques.operand2 = b;
+    //     } else {
+    //       ques.operand1 = b;
+    //       ques.operand2 = a;
+    //     }
+    //     ques.operator = '-';
+    //     ques.correctAnswer = ques.operand1 - ques.operand2;
+    //     ques.id = MathService.id++;
+    //     question.push(ques);
+    //   }
+    //   questions.push(question);
+    // }
+    return questions;
+  }
+
+  getMultiplication(content: Content): Question[][] {
+    let ques: Question;
+    let question: Question[];
+    let questions: Question[][] = [];
+    // for (let i = 0; i < this.ROW; i++) {
+    //   question = [];
+    //   for (let j = 0; j < this.COL; j++) {
+    //     ques = new Question();
+    //     ques.operand1 = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     ques.operand2 = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     ques.operator = 'x';
+    //     ques.correctAnswer = ques.operand1 * ques.operand2;
+    //     ques.id = MathService.id++;
+    //     question.push(ques);
+    //   }
+    //   questions.push(question);
+    // }
+    return questions;
+  }
+
+  getDivision(content: Content): Question[][] {
+    let ques: Question;
+    let question: Question[];
+    let questions: Question[][] = [];
+    // for (let i = 0; i < this.ROW; i++) {
+    //   question = [];
+    //   for (let j = 0; j < this.COL; j++) {
+    //     ques = new Question();
+    //     ques.operand1 = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     ques.operand2 = this.rand(
+    //       Math.pow(this.MAX, gradeId),
+    //       Math.pow(this.MAX, gradeId - 1)
+    //     );
+    //     ques.operator = '/';
+    //     ques.correctAnswer = ques.operand1 / ques.operand2;
+    //     ques.id = MathService.id++;
+    //     question.push(ques);
+    //   }
+    //   questions.push(question);
+    // }
     return questions;
   }
 

@@ -61,7 +61,7 @@
                     <a
                       class="mobile"
                       [routerLink]=""
-                      (click)="selectTopic(grade, subject, topic)"
+                      (click)="selectTopic(grade.id, subject.id, topic)"
                     >
                       <span class="icon"
                         ><fa-icon [icon]="topic.icon"></fa-icon
@@ -105,7 +105,7 @@
               class="dropdown-item"
               [routerLink]=""
               *ngFor="let content of topic.contents"
-              (click)="selectContent(content, topic)"
+              (click)="getQuestion()"
               >{{ content.name }}</a
             >
           </div>
