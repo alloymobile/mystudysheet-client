@@ -13,15 +13,27 @@
             "contents": [
               {
                 "id": 1,
-                "name": "Vertical problems"
+                "name": "Vertical sheet"
               },
               {
                 "id": 2,
-                "name": "Horizontal problems"
+                "name": "No Regrouping sheet"
               },
               {
                 "id": 3,
-                "name": "Word Problems"
+                "name": "Regrouping sheet"
+              },
+              {
+                "id": 4,
+                "name": "Horizontal sheet"
+              },
+              {
+                "id": 5,
+                "name": "Review sheet"
+              },
+              {
+                "id": 6,
+                "name": "Word sheet"
               }
             ]
           },

@@ -87,27 +87,22 @@
             aria-haspopup="true"
             aria-expanded="false"
             [routerLink]=""
-            (click)="topic.active = !topic.active"
           >
             <span>{{ topic.name }}</span>
-            <span *ngIf="topic.active != null">
-              <fa-icon
-                [icon]="upToggle"
-                *ngIf="topic.active; else upArrow"
-              ></fa-icon>
-              <ng-template #upArrow>
-                <fa-icon [icon]="downToggle"></fa-icon>
-              </ng-template>
-            </span>
           </a>
           <div class="dropdown-menu">
-            <a
-              class="dropdown-item"
-              [routerLink]=""
-              *ngFor="let content of topic.contents"
-              (click)="getQuestion(content)"
-              >{{ content.name }}</a
-            >
+            <div *ngFor="let content of topic.contents; index as i">
+              <a
+                class="dropdown-item"
+                [routerLink]=""
+                (click)="getQuestion(content)"
+                >{{ content.name }}</a
+              >
+              <div
+                class="dropdown-divider"
+                *ngIf="i != topic.contents.length - 1"
+              ></div>
+            </div>
           </div>
         </li>
         <li class="nav-item">
@@ -139,7 +134,7 @@
       </ul>
       <div [ngSwitch]="content.id">
         <app-c5x4v [questions]="questions" *ngSwitchCase="1"></app-c5x4v>
-        <app-c5x4h [questions]="questions" *ngSwitchCase="2"></app-c5x4h>
+        <app-c5x4h [questions]="questions" *ngSwitchCase="4"></app-c5x4h>
         <app-c20x1 [questions]="questions" *ngSwitchCase="3"></app-c20x1>
       </div>
     </div>

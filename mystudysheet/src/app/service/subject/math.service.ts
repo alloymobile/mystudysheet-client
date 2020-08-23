@@ -1,5 +1,5 @@
+import { Data } from './../../model/data';
 import { AdditionService } from './../topic/addition.service';
-import { Content } from '../../model/content';
 import { Question } from '../../model/question';
 import { Injectable } from '@angular/core';
 
@@ -14,10 +14,10 @@ export class MathService {
     this.COL = 4;
   }
 
-  getMath(content: Content): Question[][] {
-    switch (content.topicId) {
+  getMath(data: Data): Question[][] {
+    switch (data.topicId) {
       case 1:
-        return this.additionService.getAddition(content, this.ROW, this.COL);
+        return this.additionService.getAddition(data, this.ROW, this.COL);
         break;
     }
   }

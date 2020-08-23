@@ -1,3 +1,4 @@
+import { Data } from './../model/data';
 import { MathService } from './../service/subject/math.service';
 import { Content } from './../model/content';
 import { MyStudySheet } from './../mystudysheet';
@@ -19,6 +20,7 @@ import {
 export class MainComponent extends MyStudySheet implements OnInit {
   topic: Topic;
   content: Content;
+  data: Data;
   questions: Question[][];
   //To change toggel arrow
   downToggle = faCaretDown;
@@ -33,6 +35,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
     super();
     this.topic = new Topic();
     this.content = new Content();
+    this.data = new Data();
     this.questions = [];
     this.showCheckAnswer = false;
   }
@@ -43,20 +46,21 @@ export class MainComponent extends MyStudySheet implements OnInit {
     if (topic.contents && topic.contents.length > 0) {
       this.content = topic.contents[0];
     }
-    this.content.gradeId = gradeId;
-    this.content.subjectId = subjectId;
-    this.content.topicId = topic.id;
+    this.data.gradeId = gradeId;
+    this.data.subjectId = subjectId;
+    this.data.topicId = topic.id;
+    this.data.contentId = this.content.id;
     this.topic = topic;
     this.topic.active = false;
     this.getQuestion(this.content);
   }
 
   getQuestion(content: Content) {
-    this.content = content;
+    this.data.contentId = content.id;
     this.showCheckAnswer = false;
-    switch (this.content.subjectId) {
+    switch (this.data.subjectId) {
       case 1:
-        this.questions = this.mathService.getMath(this.content);
+        this.questions = this.mathService.getMath(this.data);
         break;
     }
   }
