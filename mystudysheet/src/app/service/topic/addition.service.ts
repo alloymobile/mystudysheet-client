@@ -120,6 +120,7 @@ export class AdditionService {
         }
         ques.operator = '+';
         ques.correctAnswer = Number(ques.operand1) + Number(ques.operand2);
+        ques.answerLocation = this.random(3);
         ques.id = AdditionService.id++;
         question.push(ques);
       }

@@ -6,6 +6,7 @@ export class Question {
   operand2: string;
   operator: string;
   correctAnswer: number;
+  answerLocation: number;
   showAnswer: boolean;
   checkAnswer: boolean;
   constructor(question?: any) {
@@ -16,6 +17,8 @@ export class Question {
     this.correctAnswer = 0;
     this.showAnswer = false;
     this.checkAnswer = null;
+    this.answerLocation = 2;
+
     if (question) {
       this.id = Number(question.id);
       this.name = question.name;

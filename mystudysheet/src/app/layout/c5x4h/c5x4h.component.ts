@@ -9,17 +9,43 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class C5x4hComponent implements OnInit {
   @Input() questions: Question[][];
+  @Input() contentType: number;
   check = faCheck;
   cross = faTimes;
-  constructor() {}
+  answerLocation: number;
+  constructor() {
+    this.answerLocation = 2;
+  }
 
   ngOnInit(): void {}
 
   checkAnswer(question: Question) {
-    if (question.answer == String(question.correctAnswer)) {
-      question.checkAnswer = true;
+    if (this.contentType === 5) {
+      if (question.answerLocation === 0) {
+        if (question.answer == question.operand1) {
+          question.checkAnswer = true;
+        } else {
+          question.checkAnswer = false;
+        }
+      } else if (question.answerLocation === 1) {
+        if (question.answer == question.operand2) {
+          question.checkAnswer = true;
+        } else {
+          question.checkAnswer = false;
+        }
+      } else {
+        if (question.answer == String(question.correctAnswer)) {
+          question.checkAnswer = true;
+        } else {
+          question.checkAnswer = false;
+        }
+      }
     } else {
-      question.checkAnswer = false;
+      if (question.answer == String(question.correctAnswer)) {
+        question.checkAnswer = true;
+      } else {
+        question.checkAnswer = false;
+      }
     }
   }
 }

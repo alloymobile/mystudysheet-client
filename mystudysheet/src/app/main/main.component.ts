@@ -74,9 +74,27 @@ export class MainComponent extends MyStudySheet implements OnInit {
     if (this.questions && this.questions.length > 0) {
       for (let i = 0; i < this.questions.length; i++) {
         for (let j = 0; j < this.questions[i].length; j++) {
-          this.questions[i][j].answer = String(
-            this.questions[i][j].correctAnswer
-          );
+          if (this.data.contentId === 5) {
+            if (this.questions[i][j].answerLocation === 0) {
+              this.questions[i][j].answer = String(
+                this.questions[i][j].correctAnswer -
+                  Number(this.questions[i][j].operand2)
+              );
+            } else if (this.questions[i][j].answerLocation === 1) {
+              this.questions[i][j].answer = String(
+                this.questions[i][j].correctAnswer -
+                  Number(this.questions[i][j].operand1)
+              );
+            } else {
+              this.questions[i][j].answer = String(
+                this.questions[i][j].correctAnswer
+              );
+            }
+          } else {
+            this.questions[i][j].answer = String(
+              this.questions[i][j].correctAnswer
+            );
+          }
           this.questions[i][j].showAnswer = true;
         }
       }
