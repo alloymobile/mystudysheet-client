@@ -58,6 +58,7 @@ export class MainComponent extends MyStudySheet implements OnInit {
   getQuestion(content: Content) {
     this.data.contentId = content.id;
     this.showCheckAnswer = false;
+    this.content = content;
     switch (this.data.subjectId) {
       case 1:
         this.questions = this.mathService.getMath(this.data);

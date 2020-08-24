@@ -134,8 +134,11 @@
       </ul>
       <div [ngSwitch]="content.id">
         <app-c5x4v [questions]="questions" *ngSwitchCase="1"></app-c5x4v>
+        <app-c5x4v [questions]="questions" *ngSwitchCase="2"></app-c5x4v>
+        <app-c5x4v [questions]="questions" *ngSwitchCase="3"></app-c5x4v>
         <app-c5x4h [questions]="questions" *ngSwitchCase="4"></app-c5x4h>
-        <app-c20x1 [questions]="questions" *ngSwitchCase="3"></app-c20x1>
+        <app-c5x4h [questions]="questions" *ngSwitchCase="5"></app-c5x4h>
+        <app-c20x1 [questions]="questions" *ngSwitchCase="6"></app-c20x1>
       </div>
     </div>
   </div>
