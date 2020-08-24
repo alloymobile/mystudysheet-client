@@ -1,6 +1,5 @@
-import { Data } from './../../model/data';
-import { Content } from './../../model/content';
-import { Question } from './../../model/question';
+import { Data } from '../../../model/data';
+import { Question } from '../../../model/question';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -188,11 +187,10 @@ export class AdditionService {
           let temp = this.rand(MAX, 0);
           opt1 = opt1 + temp;
           if (numberSet && numberSet.length > 0) {
-            let noRegroup = numberSet.filter((n) => n + temp >= MAX);
-            let count =
-              noRegroup && noRegroup.length > 0 ? noRegroup.length : 0;
+            let regroup = numberSet.filter((n) => n + temp >= MAX);
+            let count = regroup && regroup.length > 0 ? regroup.length : 0;
             let index = this.random(count);
-            opt2 = opt2 + noRegroup[index];
+            opt2 = opt2 + regroup[index];
           }
         }
         ques.operand1 = opt1;

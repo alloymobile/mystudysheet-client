@@ -1,4 +1,5 @@
-import { AdditionService } from './service/topic/addition.service';
+import { SubtractionService } from './service/topic/math/subtraction.service';
+import { AdditionService } from './service/topic/math/addition.service';
 import { MathService } from './service/subject/math.service';
 import { GeneratePDFService } from './service/generate-pdf.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +25,12 @@ import { C20x1Component } from './layout/c20x1/c20x1.component';
     C20x1Component,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
-  providers: [GeneratePDFService, MathService, AdditionService],
+  providers: [
+    GeneratePDFService,
+    MathService,
+    AdditionService,
+    SubtractionService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
