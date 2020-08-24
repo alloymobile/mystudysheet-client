@@ -102,6 +102,10 @@ export class MainComponent extends MyStudySheet implements OnInit {
   }
 
   generatePDF() {
-    this.generatePDFService.generatePDF('open', this.questions);
+    this.generatePDFService.generatePDF(
+      'open',
+      this.questions,
+      this.content.id
+    );
   }
 }

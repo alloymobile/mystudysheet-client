@@ -10,7 +10,103 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class GeneratePDFService {
   constructor() {}
 
-  generatePDF(action = 'open', questions: Question[][]) {
+  generatePDF(action = 'open', questions: Question[][], contentId: number) {
+    var rows = [];
+    var heights = [130, 130, 130, 130, 130];
+    switch (contentId) {
+      case 1:
+      case 2:
+      case 3:
+        rows = this.generatePDFVrtical(questions);
+        break;
+      case 4:
+      case 5:
+        rows = this.generatePDFHorizontal(questions);
+        break;
+      case 6:
+        rows = this.generatePDFLine();
+        break;
+      default:
+        rows = this.generatePDFVrtical(questions);
+        break;
+    }
+    let docDefinition = {
+      pageSize: 'A4',
+      content: [
+        {
+          text: 'www.mystudysheet.com',
+          alignment: 'center',
+        },
+        {
+          table: {
+            widths: ['*', '*', '*', '*'],
+            heights: heights,
+            body: rows,
+          },
+        },
+      ],
+    };
+
+    if (action === 'download') {
+      pdfMake.createPdf(docDefinition).download();
+    } else if (action === 'print') {
+      pdfMake.createPdf(docDefinition).print();
+    } else {
+      pdfMake.createPdf(docDefinition).open();
+    }
+  }
+
+  generatePDFHorizontal(questions: Question[][]): any[][] {
+    var rows = [];
+    var heights = [130, 130, 130, 130, 130];
+    if (questions && questions.length > 0) {
+      for (let i = 0; i < questions.length; i++) {
+        let row = [];
+        for (let j = 0; j < questions[i].length; j++) {
+          let r1 = {
+            text:
+              questions[i][j].operand1 +
+              ' ' +
+              questions[i][j].operator +
+              ' ' +
+              questions[i][j].operand2 +
+              ' = ',
+            fontSize: 25,
+            preserveLeadingSpaces: true,
+          };
+          let r2 = {
+            text: ' ',
+            preserveLeadingSpaces: true,
+          };
+
+          if (questions[i][j].showAnswer) {
+            r1 = {
+              text:
+                questions[i][j].operand1 +
+                ' ' +
+                questions[i][j].operator +
+                ' ' +
+                questions[i][j].operand2 +
+                ' = ' +
+                questions[i][j].answer,
+              fontSize: 20,
+              preserveLeadingSpaces: true,
+            };
+          }
+          let op = [];
+          op.push(r2, r1, r2);
+          let res = [];
+          res.push(op);
+          let final = { columns: res };
+          row.push(final);
+        }
+        rows.push(row);
+      }
+    }
+    return rows;
+  }
+
+  generatePDFVrtical(questions: Question[][]): any[][] {
     var rows = [];
     var heights = [130, 130, 130, 130, 130];
     if (questions && questions.length > 0) {
@@ -62,30 +158,10 @@ export class GeneratePDFService {
         rows.push(row);
       }
     }
+    return rows;
+  }
 
-    let docDefinition = {
-      pageSize: 'A4',
-      content: [
-        {
-          text: 'www.mystudysheet.com',
-          alignment: 'center',
-        },
-        {
-          table: {
-            widths: ['*', '*', '*', '*'],
-            heights: heights,
-            body: rows,
-          },
-        },
-      ],
-    };
-
-    if (action === 'download') {
-      pdfMake.createPdf(docDefinition).download();
-    } else if (action === 'print') {
-      pdfMake.createPdf(docDefinition).print();
-    } else {
-      pdfMake.createPdf(docDefinition).open();
-    }
+  generatePDFLine(): any[][] {
+    return null;
   }
 }
