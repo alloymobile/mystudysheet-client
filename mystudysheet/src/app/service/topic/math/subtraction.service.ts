@@ -110,7 +110,7 @@ export class SubtractionService {
         ques.operand2 = '';
         let opt1 = String(this.rand(Math.pow(MAX, data.gradeId), 0));
         let opt2 = String(this.rand(Math.pow(MAX, data.gradeId), 0));
-        if (opt1 >= opt2) {
+        if (Number(opt1) >= Number(opt2)) {
           ques.operand1 = opt1;
           ques.operand2 = opt2;
         } else {
@@ -208,12 +208,22 @@ export class SubtractionService {
         let opt2 = '';
         for (let k = 0; k < data.gradeId; k++) {
           let temp = this.rand(MAX, 0);
-          opt1 = opt1 + temp;
-          if (numberSet && numberSet.length > 0) {
-            let regroup = numberSet.filter((n) => temp - n <= 0);
-            let count = regroup && regroup.length > 0 ? regroup.length : 0;
-            let index = this.random(count);
-            opt2 = opt2 + regroup[index];
+          if (k === 0) {
+            opt1 = opt1 + temp;
+            if (numberSet && numberSet.length > 0) {
+              let regroup = numberSet.filter((n) => temp - n > 0);
+              let count = regroup && regroup.length > 0 ? regroup.length : 0;
+              let index = this.random(count);
+              opt2 = opt2 + regroup[index];
+            }
+          } else {
+            opt1 = opt1 + temp;
+            if (numberSet && numberSet.length > 0) {
+              let regroup = numberSet.filter((n) => temp - n <= 0);
+              let count = regroup && regroup.length > 0 ? regroup.length : 0;
+              let index = this.random(count);
+              opt2 = opt2 + regroup[index];
+            }
           }
         }
         ques.operand1 = opt1;
