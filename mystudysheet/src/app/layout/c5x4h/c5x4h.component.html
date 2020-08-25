@@ -15,10 +15,10 @@
                   (blur)="checkAnswer(ques)"
                   class="form-control w-25"
                 />
-                <span class="h3">{{ " " + ques.operator + " " }}</span>
-                <span class="h3">{{ ques.operand2 }}</span>
-                <span class="h3">{{ " = " }}</span>
-                <span class="h3">{{ ques.correctAnswer }}</span>
+                <span class="h4">{{ " " + ques.operator + " " }}</span>
+                <span class="h4">{{ ques.operand2 }}</span>
+                <span class="h4">{{ " = " }}</span>
+                <span class="h4">{{ ques.correctAnswer }}</span>
                 <div *ngIf="ques.checkAnswer != null" class="text-center">
                   <fa-icon
                     [icon]="check"
@@ -30,16 +30,16 @@
                 </div>
               </div>
               <div *ngSwitchCase="1" class="form-inline justify-content-around">
-                <span class="h3">{{ ques.operand1 }}</span>
-                <span class="h3">{{ " " + ques.operator + " " }}</span>
+                <span class="h4">{{ ques.operand1 }}</span>
+                <span class="h4">{{ " " + ques.operator + " " }}</span>
                 <input
                   type="number"
                   [(ngModel)]="ques.answer"
                   (blur)="checkAnswer(ques)"
                   class="form-control w-25"
                 />
-                <span class="h3">{{ " = " }}</span>
-                <span class="h3">{{ ques.correctAnswer }}</span>
+                <span class="h4">{{ " = " }}</span>
+                <span class="h4">{{ ques.correctAnswer }}</span>
                 <div *ngIf="ques.checkAnswer != null" class="text-center">
                   <fa-icon
                     [icon]="check"
@@ -51,10 +51,10 @@
                 </div>
               </div>
               <div *ngSwitchDefault class="form-inline justify-content-around">
-                <span class="h3">{{ ques.operand1 }}</span>
-                <span class="h3">{{ " " + ques.operator + " " }}</span>
-                <span class="h3">{{ ques.operand2 }}</span>
-                <span class="h3">{{ " = " }}</span>
+                <span class="h4">{{ ques.operand1 }}</span>
+                <span class="h4">{{ " " + ques.operator + " " }}</span>
+                <span class="h4">{{ ques.operand2 }}</span>
+                <span class="h4">{{ " = " }}</span>
                 <input
                   type="number"
                   [(ngModel)]="ques.answer"
@@ -74,10 +74,10 @@
             </div>
           </div>
           <ng-template #normal>
-            <span class="h3">{{ ques.operand1 }}</span>
-            <span class="h3">{{ " " + ques.operator + " " }}</span>
-            <span class="h3">{{ ques.operand2 }}</span>
-            <span class="h3">{{ " = " }}</span>
+            <span class="h4">{{ ques.operand1 }}</span>
+            <span class="h4">{{ " " + ques.operator + " " }}</span>
+            <span class="h4">{{ ques.operand2 }}</span>
+            <span class="h4">{{ " = " }}</span>
             <input
               type="number"
               [(ngModel)]="ques.answer"
