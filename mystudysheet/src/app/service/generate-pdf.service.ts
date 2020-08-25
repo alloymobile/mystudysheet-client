@@ -20,8 +20,10 @@ export class GeneratePDFService {
         rows = this.generatePDFVrtical(questions);
         break;
       case 4:
-      case 5:
         rows = this.generatePDFHorizontal(questions);
+        break;
+      case 5:
+        rows = this.generatePDFReview(questions);
         break;
       case 6:
         rows = this.generatePDFLine();
@@ -56,6 +58,83 @@ export class GeneratePDFService {
     }
   }
 
+  generatePDFReview(questions: Question[][]): any[][] {
+    var rows = [];
+    var heights = [130, 130, 130, 130, 130];
+    if (questions && questions.length > 0) {
+      for (let i = 0; i < questions.length; i++) {
+        let row = [];
+        let r1 = {};
+        for (let j = 0; j < questions[i].length; j++) {
+          if (questions[i][j].answerLocation === 0) {
+            r1 = {
+              text:
+                '      ' +
+                questions[i][j].operator +
+                ' ' +
+                questions[i][j].operand2 +
+                ' = ' +
+                questions[i][j].correctAnswer,
+              fontSize: 20,
+              preserveLeadingSpaces: true,
+            };
+          } else if (questions[i][j].answerLocation === 1) {
+            r1 = {
+              text:
+                questions[i][j].operand1 +
+                ' ' +
+                questions[i][j].operator +
+                '      ' +
+                ' = ' +
+                questions[i][j].correctAnswer,
+              fontSize: 20,
+              preserveLeadingSpaces: true,
+            };
+          } else {
+            r1 = {
+              text:
+                questions[i][j].operand1 +
+                ' ' +
+                questions[i][j].operator +
+                ' ' +
+                questions[i][j].operand2 +
+                ' = ',
+              fontSize: 20,
+              preserveLeadingSpaces: true,
+            };
+          }
+          let r2 = {
+            text: ' ',
+            preserveLeadingSpaces: true,
+          };
+
+          if (questions[i][j].showAnswer) {
+            r1 = {
+              text:
+                questions[i][j].operand1 +
+                ' ' +
+                questions[i][j].operator +
+                ' ' +
+                questions[i][j].operand2 +
+                ' = ' +
+                questions[i][j].answer,
+              fontSize: 20,
+              preserveLeadingSpaces: true,
+            };
+          }
+          let op = [];
+          op.push(r2, r1, r2);
+          let res = [];
+          res.push(op);
+          let final = { columns: res };
+          row.push(final);
+        }
+        rows.push(row);
+      }
+    }
+    return rows;
+  }
+
   generatePDFHorizontal(questions: Question[][]): any[][] {
     var rows = [];
     var heights = [130, 130, 130, 130, 130];
@@ -71,7 +150,7 @@ export class GeneratePDFService {
               ' ' +
               questions[i][j].operand2 +
               ' = ',
-            fontSize: 25,
+            fontSize: 20,
             preserveLeadingSpaces: true,
           };
           let r2 = {

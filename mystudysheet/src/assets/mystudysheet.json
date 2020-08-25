@@ -68,34 +68,6 @@
             ]
           },
           {
-            "id": 3,
-            "name": "Multiplication",
-            "contents": [
-              {
-                "id": 1,
-                "name": "Number problem"
-              },
-              {
-                "id": 2,
-                "name": "Word Problem"
-              }
-            ]
-          },
-          {
-            "id": 4,
-            "name": "Division",
-            "contents": [
-              {
-                "id": 1,
-                "name": "Number problem"
-              },
-              {
-                "id": 2,
-                "name": "Word Problem"
-              }
-            ]
-          },
-          {
             "id": 5,
             "name": "Mix"
           }
@@ -197,11 +169,51 @@
           },
           {
             "id": 3,
-            "name": "Multiplication"
+            "name": "Multiplication",
+            "contents": [
+              {
+                "id": 1,
+                "name": "Vertical sheet"
+              },
+              {
+                "id": 4,
+                "name": "Horizontal sheet"
+              },
+              {
+                "id": 5,
+                "name": "Review sheet"
+              },
+              {
+                "id": 6,
+                "name": "Word sheet"
+              }
+            ]
           },
           {
             "id": 4,
-            "name": "Division"
+            "name": "Division",
+            "contents": [
+              {
+                "id": 1,
+                "name": "Vertical sheet"
+              },
+              {
+                "id": 4,
+                "name": "Horizontal sheet"
+              },
+              {
+                "id": 5,
+                "name": "Review sheet"
+              },
+              {
+                "id": 6,
+                "name": "Word sheet"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Mix"
           }
         ]
       }
@@ -277,11 +289,51 @@
           },
           {
             "id": 3,
-            "name": "Multiplication"
+            "name": "Multiplication",
+            "contents": [
+              {
+                "id": 1,
+                "name": "Vertical sheet"
+              },
+              {
+                "id": 4,
+                "name": "Horizontal sheet"
+              },
+              {
+                "id": 5,
+                "name": "Review sheet"
+              },
+              {
+                "id": 6,
+                "name": "Word sheet"
+              }
+            ]
           },
           {
             "id": 4,
-            "name": "Division"
+            "name": "Division",
+            "contents": [
+              {
+                "id": 1,
+                "name": "Vertical sheet"
+              },
+              {
+                "id": 4,
+                "name": "Horizontal sheet"
+              },
+              {
+                "id": 5,
+                "name": "Review sheet"
+              },
+              {
+                "id": 6,
+                "name": "Word sheet"
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Mix"
           }
         ]
       }

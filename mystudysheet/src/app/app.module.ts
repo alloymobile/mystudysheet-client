@@ -1,3 +1,5 @@
+import { DivisionService } from './service/topic/math/division.service';
+import { MultiplicationService } from './service/topic/math/multiplication.service';
 import { SubtractionService } from './service/topic/math/subtraction.service';
 import { AdditionService } from './service/topic/math/addition.service';
 import { MathService } from './service/subject/math.service';
@@ -30,6 +32,8 @@ import { C20x1Component } from './layout/c20x1/c20x1.component';
     MathService,
     AdditionService,
     SubtractionService,
+    MultiplicationService,
+    DivisionService,
   ],
   bootstrap: [AppComponent],
 })

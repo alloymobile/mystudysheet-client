@@ -1,3 +1,4 @@
+import { MyStudySheetService } from './../../mystudysheetservice';
 import { Data } from '../../../model/data';
 import { Question } from '../../../model/question';
 import { Injectable } from '@angular/core';
@@ -5,10 +6,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AdditionService {
+export class AdditionService extends MyStudySheetService {
   static id: number;
   MAX: number;
   constructor() {
+    super();
     AdditionService.id = 1;
     this.MAX = 10;
   }
@@ -203,18 +205,5 @@ export class AdditionService {
       questions.push(question);
     }
     return questions;
-  }
-
-  // random in a range
-  rand(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  // random from 0 to the number
-  random(max: number) {
-    max = Math.floor(max);
-    return Math.floor(Math.random() * max);
   }
 }
