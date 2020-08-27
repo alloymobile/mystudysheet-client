@@ -66,6 +66,10 @@ ul ul ul a {
   padding-left: 40px !important;
   background: #6d7fcc;
 }
+
+.scroll {
+  overflow-y: scroll;
+}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

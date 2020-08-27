@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mystudysheet';
+  public clickedEvent: String;
+
+  childEventClicked(event: String) {
+    this.clickedEvent = event;
+  }
 }

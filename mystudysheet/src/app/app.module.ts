@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { C5x4vComponent } from './layout/c5x4v/c5x4v.component';
 import { C5x4hComponent } from './layout/c5x4h/c5x4h.component';
 import { C20x1Component } from './layout/c20x1/c20x1.component';
+import { PrintComponent } from './layout/print/print.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { C20x1Component } from './layout/c20x1/c20x1.component';
     C5x4vComponent,
     C5x4hComponent,
     C20x1Component,
+    PrintComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
   providers: [

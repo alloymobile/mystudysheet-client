@@ -5,7 +5,7 @@ import { MyStudySheet } from './../mystudysheet';
 import { Question } from './../model/question';
 import { GeneratePDFService } from './../service/generate-pdf.service';
 import { Topic } from './../model/topic';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   faCaretDown,
   faCaretUp,
@@ -107,5 +107,8 @@ export class MainComponent extends MyStudySheet implements OnInit {
       this.questions,
       this.content.id
     );
+  }
+  print() {
+    this.content.id = -1;
   }
 }

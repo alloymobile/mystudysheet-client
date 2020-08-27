@@ -1,3 +1,4 @@
+import { MyStudySheetService } from './../mystudysheetservice';
 import { Question } from './../../model/question';
 import { DivisionService } from '../topic/math/division.service';
 import { MultiplicationService } from '../topic/math/multiplication.service';
@@ -9,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class MathService {
+export class MathService extends MyStudySheetService {
   ROW: number;
   COL: number;
   constructor(
@@ -18,6 +19,7 @@ export class MathService {
     private multiplicationService: MultiplicationService,
     private divisionService: DivisionService
   ) {
+    super();
     this.ROW = 5;
     this.COL = 4;
   }

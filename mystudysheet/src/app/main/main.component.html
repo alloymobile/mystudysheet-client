@@ -128,7 +128,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Answer Sheet</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">10 StudySheets</a>
+            <a class="dropdown-item" (click)="print()">StudySheets</a>
           </div>
         </li>
       </ul>
@@ -147,7 +147,7 @@
           *ngSwitchCase="5"
         ></app-c5x4h>
         <app-c20x1 [questions]="questions" *ngSwitchCase="6"></app-c20x1>
-        <app-c5x4v [questions]="questions" *ngSwitchDefault></app-c5x4v>
+        <app-print [questions]="questions" *ngSwitchDefault></app-print>
       </div>
     </div>
   </div>

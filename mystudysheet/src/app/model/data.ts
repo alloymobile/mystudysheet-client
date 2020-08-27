@@ -1,3 +1,4 @@
+import { Question } from './question';
 export class Data {
   gradeId: number;
   subjectId: number;
