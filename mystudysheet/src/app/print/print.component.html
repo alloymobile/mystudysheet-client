@@ -1,3 +1,4 @@
+<button class="btn btn-primary" (click)="addNewRow()">Add More</button>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,10 +19,10 @@
         <select
           class="form-control"
           id="gradeId"
-          (change)="selectGrade($event.target.value)"
+          (change)="selectGrade($event.target.value, i)"
         >
           <option>Select</option>
-          <option *ngFor="let grade of grades; index as i" [value]="i">
+          <option *ngFor="let grade of no.grades; index as j" [value]="j">
             {{ grade.name }}
           </option>
         </select>
@@ -30,10 +31,10 @@
         <select
           class="form-control"
           id="subjectId"
-          (change)="selectSubject($event.target.value)"
+          (change)="selectSubject($event.target.value, i)"
         >
           <option>Select</option>
-          <option *ngFor="let subject of subjects; index as i" [value]="i">
+          <option *ngFor="let subject of no.subjects; index as j" [value]="j">
             {{ subject.name }}
           </option>
         </select>
@@ -42,10 +43,10 @@
         <select
           class="form-control"
           id="topicId"
-          (change)="selectTopic($event.target.value)"
+          (change)="selectTopic($event.target.value, i)"
         >
           <option>Select</option>
-          <option *ngFor="let topic of topics; index as i" [value]="i">
+          <option *ngFor="let topic of no.topics; index as j" [value]="j">
             {{ topic.name }}
           </option>
         </select>
@@ -54,10 +55,10 @@
         <select
           class="form-control"
           id="contentId"
-          (change)="selectContent($event.target.value)"
+          (change)="selectContent($event.target.value, i)"
         >
           <option>Select</option>
-          <option *ngFor="let content of contents; index as i" [value]="i">
+          <option *ngFor="let content of no.contents; index as j" [value]="j">
             {{ content.name }}
           </option>
         </select>
@@ -66,20 +67,21 @@
         <input
           type="number"
           class="form-control"
-          [(ngModel)]="noOfSheet"
+          [(ngModel)]="no.noOfSheet"
           id="noOfSheets"
+          (change)="calculateRowTotal(no)"
         />
       </td>
       <td class="form-group">
-        <label>{{ price }}</label>
+        <label>{{ no.price | currency: "CAD" }}</label>
       </td>
       <td class="form-group">
-        <label>{{ price * noOfSheet }}</label>
+        <label>{{ no.totalCost | currency: "CAD" }}</label>
       </td>
     </tr>
     <tr>
       <td colspan="7">total</td>
-      <td>total</td>
+      <td>{{ total | currency: "CAD" }}</td>
     </tr>
   </tbody>
 </table>

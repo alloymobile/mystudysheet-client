@@ -1,8 +1,4 @@
-import { Data } from './../model/data';
-import { Content } from './../model/content';
-import { Topic } from './../model/topic';
-import { Subject } from './../model/subject';
-import { Grade } from './../model/grade';
+import { Print } from './../model/print';
 import { MyStudySheet } from './../mystudysheet';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,42 +8,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./print.component.css'],
 })
 export class PrintComponent extends MyStudySheet implements OnInit {
-  noOfOrders: number[];
-  price: number;
-  noOfSheet: number;
-  totalCost: number;
-  data: Data;
-  subjects: Subject[];
-  topics: Topic[];
-  contents: Content[];
+  noOfOrders: Print[];
+  total: string;
   constructor() {
     super();
-    this.noOfOrders = [1];
-    this.price = 0.1;
-    this.noOfSheet = 1;
-    this.totalCost = this.price * this.noOfSheet;
-    this.data = new Data();
-    this.subjects = [];
-    this.topics = [];
-    this.contents = [];
+    this.noOfOrders = [];
+    this.total = '';
   }
 
   ngOnInit(): void {}
 
-  selectGrade(gradeId: number) {
-    this.data.gradeId = this.grades[gradeId].id;
-    this.subjects = this.grades[gradeId].subjects;
+  selectGrade(gradeId: number, orderRow: number) {
+    this.noOfOrders[orderRow].subjects = this.noOfOrders[orderRow].grades[
+      gradeId
+    ].subjects;
   }
 
-  selectSubject(subjectId: number) {
-    this.data.subjectId = this.subjects[subjectId].id;
-    this.topics = this.subjects[subjectId].topics;
+  selectSubject(subjectId: number, orderRow: number) {
+    this.noOfOrders[orderRow].topics = this.noOfOrders[orderRow].subjects[
+      subjectId
+    ].topics;
   }
 
-  selectTopic(topicId: number) {
-    this.data.contentId = this.topics[topicId].id;
-    this.contents = this.topics[topicId].contents;
+  selectTopic(topicId: number, orderRow: number) {
+    this.noOfOrders[orderRow].contents = this.noOfOrders[orderRow].topics[
+      topicId
+    ].contents;
   }
 
   selectContent(contentId: number) {}
+
+  addNewRow() {
+    let print = new Print();
+    print.grades = this.grades;
+    this.noOfOrders.push(print);
+  }
+
+  calculateRowTotal(no: Print) {
+    no.totalCost = String((no.noOfSheet * no.price).toFixed(2));
+    this.total = String((Number(this.total) + Number(no.totalCost)).toFixed(2));
+  }
 }
