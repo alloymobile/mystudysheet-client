@@ -78,7 +78,7 @@
     </div>
     <!----------------------------------Main Component----------------------------->
     <div class="col-10">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" *ngIf="questions.length > 0">
         <li class="nav-item">
           <a
             class="nav-link dropdown-toggle"
@@ -127,8 +127,6 @@
             >
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Answer Sheet</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" (click)="print()">StudySheets</a>
           </div>
         </li>
       </ul>
@@ -147,7 +145,6 @@
           *ngSwitchCase="5"
         ></app-c5x4h>
         <app-c20x1 [questions]="questions" *ngSwitchCase="6"></app-c20x1>
-        <app-print [questions]="questions" *ngSwitchDefault></app-print>
       </div>
     </div>
   </div>

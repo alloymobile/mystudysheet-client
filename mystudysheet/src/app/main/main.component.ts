@@ -108,7 +108,4 @@ export class MainComponent extends MyStudySheet implements OnInit {
       this.content.id
     );
   }
-  print() {
-    this.content.id = -1;
-  }
 }

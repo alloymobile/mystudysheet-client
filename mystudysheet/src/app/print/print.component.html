@@ -1,0 +1,85 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sl NO</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Topic</th>
+      <th scope="col">Content</th>
+      <th scope="col">No of Sheets</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let no of noOfOrders; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td class="form-group">
+        <select
+          class="form-control"
+          id="gradeId"
+          (change)="selectGrade($event.target.value)"
+        >
+          <option>Select</option>
+          <option *ngFor="let grade of grades; index as i" [value]="i">
+            {{ grade.name }}
+          </option>
+        </select>
+      </td>
+      <td class="form-group">
+        <select
+          class="form-control"
+          id="subjectId"
+          (change)="selectSubject($event.target.value)"
+        >
+          <option>Select</option>
+          <option *ngFor="let subject of subjects; index as i" [value]="i">
+            {{ subject.name }}
+          </option>
+        </select>
+      </td>
+      <td class="form-group">
+        <select
+          class="form-control"
+          id="topicId"
+          (change)="selectTopic($event.target.value)"
+        >
+          <option>Select</option>
+          <option *ngFor="let topic of topics; index as i" [value]="i">
+            {{ topic.name }}
+          </option>
+        </select>
+      </td>
+      <td class="form-group">
+        <select
+          class="form-control"
+          id="contentId"
+          (change)="selectContent($event.target.value)"
+        >
+          <option>Select</option>
+          <option *ngFor="let content of contents; index as i" [value]="i">
+            {{ content.name }}
+          </option>
+        </select>
+      </td>
+      <td class="form-group">
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="noOfSheet"
+          id="noOfSheets"
+        />
+      </td>
+      <td class="form-group">
+        <label>{{ price }}</label>
+      </td>
+      <td class="form-group">
+        <label>{{ price * noOfSheet }}</label>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="7">total</td>
+      <td>total</td>
+    </tr>
+  </tbody>
+</table>
