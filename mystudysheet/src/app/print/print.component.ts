@@ -1,4 +1,5 @@
-import { Print } from './../model/print';
+import { PrintService } from './print.service';
+import { Print } from './print.model';
 import { MyStudySheet } from './../mystudysheet';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class PrintComponent extends MyStudySheet implements OnInit {
   noOfOrders: Print[];
   total: string;
-  constructor() {
+  constructor(private printService: PrintService) {
     super();
     this.noOfOrders = [];
     this.total = '';
@@ -47,5 +48,9 @@ export class PrintComponent extends MyStudySheet implements OnInit {
   calculateRowTotal(no: Print) {
     no.totalCost = String((no.noOfSheet * no.price).toFixed(2));
     this.total = String((Number(this.total) + Number(no.totalCost)).toFixed(2));
+  }
+
+  checkout() {
+    this.printService.pay(this.total);
   }
 }

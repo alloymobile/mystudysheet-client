@@ -1,7 +1,7 @@
-import { Content } from './content';
-import { Topic } from './topic';
-import { Subject } from './subject';
-import { Grade } from './grade';
+import { Content } from '../model/content';
+import { Topic } from '../model/topic';
+import { Subject } from '../model/subject';
+import { Grade } from '../model/grade';
 export class Print {
   grades: Grade[];
   subjects: Subject[];

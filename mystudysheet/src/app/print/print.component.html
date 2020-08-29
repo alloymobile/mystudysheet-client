@@ -1,4 +1,5 @@
-<button class="btn btn-primary" (click)="addNewRow()">Add More</button>
+<button class="btn btn-primary m-1" (click)="addNewRow()">Add More</button>
+<button class="btn btn-primary m-1" (click)="checkout()">Checkout</button>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -73,15 +74,15 @@
         />
       </td>
       <td class="form-group">
-        <label>{{ no.price | currency: "CAD" }}</label>
+        <label>{{ no.price | currency: "USD" }}</label>
       </td>
       <td class="form-group">
-        <label>{{ no.totalCost | currency: "CAD" }}</label>
+        <label>{{ no.totalCost | currency: "USD" }}</label>
       </td>
     </tr>
     <tr>
       <td colspan="7">total</td>
-      <td>{{ total | currency: "CAD" }}</td>
+      <td>{{ total | currency: "USD" }}</td>
     </tr>
   </tbody>
 </table>

@@ -1,3 +1,4 @@
+import { PrintService } from './print/print.service';
 import { DivisionService } from './service/topic/math/division.service';
 import { MultiplicationService } from './service/topic/math/multiplication.service';
 import { SubtractionService } from './service/topic/math/subtraction.service';
@@ -17,6 +18,7 @@ import { C5x4vComponent } from './layout/c5x4v/c5x4v.component';
 import { C5x4hComponent } from './layout/c5x4h/c5x4h.component';
 import { C20x1Component } from './layout/c20x1/c20x1.component';
 import { PrintComponent } from './print/print.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,13 @@ import { PrintComponent } from './print/print.component';
     C20x1Component,
     PrintComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    FontAwesomeModule,
+    HttpClientModule,
+  ],
   providers: [
     GeneratePDFService,
     MathService,
@@ -36,6 +44,7 @@ import { PrintComponent } from './print/print.component';
     SubtractionService,
     MultiplicationService,
     DivisionService,
+    PrintService,
   ],
   bootstrap: [AppComponent],
 })
